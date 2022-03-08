@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    public function register(RegisterRequest $request): JsonResponse
+    public function registers(RegisterRequest $request): JsonResponse
     {
         $data = $request->validated();
 

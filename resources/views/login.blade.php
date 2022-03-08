@@ -11,11 +11,11 @@
                             <div class="heading">
                                 <h4>Welcome Back!</h4>
                             </div>
-                            @if ($errors->has('error_code'))
-                                    <span class="alert alert-danger">
-                                        <strong>{{ $errors->first('error_code') }}</strong>
-                                    </span>
-                                @endif
+                            @if ($errors->any())
+                    <span class="alert alert-danger">
+                        <strong>{{ $errors->first() }}</strong>
+                    </span>
+                    @endif
                             <form  method="POST" action="{{route('loginroute')}}">
                                 @csrf
 
@@ -59,3 +59,5 @@
         </div>
     </div>
         </main>
+
+        @endsection
