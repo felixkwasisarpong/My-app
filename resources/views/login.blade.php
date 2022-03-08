@@ -1,3 +1,6 @@
+@extends('layouts.header')
+
+@section('content')
 <main class="main-content">
                 <div class="container-fluid login-page">
         <div class="row">
@@ -17,7 +20,7 @@
                                 @csrf
 
                                     <div class="form-group">
-                                    <input type="email" class="form-control " id="email" name="email" placeholder="Email" required>
+                                    <input type="text" class="form-control " id="username" name="username" placeholder="username" required>
                                                                     </div>
 
                                 <div class="form-group">
