@@ -15,6 +15,8 @@ class RegisterController extends Controller
 {
     public function registers(RegisterRequest $request): JsonResponse
     {
+
+        // dd($request->all);
         $data = $request->validated();
 
         $data = AppUtils::uploadImage($data, ImageUploader::class);
