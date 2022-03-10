@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             'nationality_id' => ['required', 'integer',
                 Rule::exists('nationalities', 'id')
             ],
-            'phone' => ['required','digits:10','unique:users,phone'],
+            'phone_number' => ['required','unique:users,phone'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required','min:6','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
             'username' => ['required', 'string', 'unique:users,username', 'alpha_num'],

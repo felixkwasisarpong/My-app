@@ -4,23 +4,29 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
+    public function login(LoginRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
-        if (!Auth::attempt($data)) // @todo return a view if the need be
+        if (!Auth::attempt($data))
         {
-            return response()->json(['message' => 'invalid email or password'], Response::HTTP_UNAUTHORIZED);
+            return back()->with('error', 'Invalid username or password')->withInput($request->all());
         }
 
-        $user = auth()->user();
+        return redirect()->route('home');
+    }
 
-        return response()->json($user); // @todo return a view if the need be
+    public function showLoginView(): View
+    {
+        return view('login');
+
     }
 }
